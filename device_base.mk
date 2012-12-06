@@ -34,6 +34,7 @@
 # and is used by people who have access to binary versions of the drivers
 # but not to the original vendor tree. Be sure to update both.
 
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := linaro
 
 # These is the hardware-specific overlay, which points to the location
 # of hardware-specific resource overrides, typically the frameworks and
@@ -44,8 +45,7 @@ DEVICE_PACKAGE_OVERLAYS := device/samsung/aries-common/overlay
 PRODUCT_COPY_FILES := \
 	device/samsung/aries-common/vold.fstab:system/etc/vold.fstab \
 	device/samsung/aries-common/egl.cfg:system/lib/egl/egl.cfg \
-	device/samsung/aries-common/mxt224_ts_input.idc:system/usr/idc/mxt224_ts_input.idc \
-	device/samsung/aries-common/main.conf:system/etc/bluetooth/main.conf
+	device/samsung/aries-common/mxt224_ts_input.idc:system/usr/idc/mxt224_ts_input.idc
 
 # Init files
 PRODUCT_COPY_FILES += \
@@ -57,6 +57,11 @@ PRODUCT_COPY_FILES += \
 	device/samsung/aries-common/lpm.rc:root/lpm.rc \
 	device/samsung/aries-common/ueventd.aries.rc:root/ueventd.aries.rc \
 	device/samsung/aries-common/setupdatadata.sh:root/sbin/setupdatadata.sh
+
+# Recovery filemanager
+PRODUCT_COPY_FILES += \
+	device/samsung/aries-common/aroma/aromafm.zip:recovery/root/tmp/aromafm.zip \
+	device/samsung/aries-common/aroma/aromafm.zip.cfg:recovery/root/tmp/aromafm.zip.cfg
 
 # Prebuilt kl keymaps
 PRODUCT_COPY_FILES += \
@@ -153,7 +158,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
 # be reachable from resources or other mechanisms.
 PRODUCT_PROPERTY_OVERRIDES += \
        wifi.interface=wlan0 \
-       ro.telephony.ril_class=SamsungRIL \
+       ro.telephony.ril_class=SamsungExynos3RIL \
        ro.telephony.ril.v3=icccardstatus,datacall,signalstrength,facilitylock \
        mobiledata.interfaces=pdp0,eth0,gprs,ppp0 \
        ro.vold.switchablepair=/mnt/emmc,/mnt/sdcard \
