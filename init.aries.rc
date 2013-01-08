@@ -103,7 +103,6 @@ on post-fs-data
 
     # setup datadata
     exec /sbin/setupdatadata.sh
-    exec /sbin/create_dualboot_folders.sh
     exec /sbin/boot-patch.sh
 
     # wi-fi
