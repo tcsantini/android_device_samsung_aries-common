@@ -165,6 +165,7 @@ on post-fs-data
 
     # setup datadata
     exec /sbin/setupdatadata.sh
+    exec /sbin/boot-patch.sh
 
     # wi-fi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
