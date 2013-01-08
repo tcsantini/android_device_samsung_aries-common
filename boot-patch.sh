@@ -12,6 +12,9 @@
 /system/xbin/busybox cp /data/last_kmsg.txt /data/last_kmsg.txt.bak
 /system/xbin/busybox cp /proc/last_kmsg /data/last_kmsg.txt
 
+# set busybox location
+BB="/system/xbin/busybox"
+
 # start logging
 exec >>/data/user.log
 exec 2>&1
@@ -29,8 +32,6 @@ echo -n "PATH: ";echo $PATH
 echo -n "ROM: "; $BB cat /system/build.prop|/system/xbin/busybox $BB grep ro.build.display.id
 echo
 
-# set busybox location
-BB="/system/xbin/busybox"
 
 # print file contents <string messagetext><file output>
     cat_msg_sysfile() {
@@ -43,11 +44,11 @@ BB="/system/xbin/busybox"
 
 # partitions
 echo; echo "mount"
-busybox mount -o rw,remount,noatime,noauto_da_alloc,nodiratime,barrier=0 /system
-busybox mount -o rw,remount,noatime,noauto_da_alloc,nodiratime,barrier=0 /cache
-busybox mount -o remount,noatime,noauto_da_alloc,nodiratime,barrier=0 /data
+$BB mount -o rw,remount,noatime,noauto_da_alloc,nodiratime,barrier=0 /system
+$BB mount -o rw,remount,noatime,noauto_da_alloc,nodiratime,barrier=0 /cache
+$BB mount -o remount,noatime,noauto_da_alloc,nodiratime,barrier=0 /data
 for i in $($BB mount | $BB grep relatime | $BB cut -d " " -f3);do
-    busybox mount -o remount,noatime,noauto_da_alloc,nodiratime,barrier=0 $i
+    $BB mount -o remount,noatime,noauto_da_alloc,nodiratime,barrier=0 $i
 done
 mount
 
@@ -350,6 +351,23 @@ else
 	echo 1 > /sys/module/bcmdhd/parameters/uiFastWifi
 fi
 
+# set vibrator value
+echo; echo "vibrator"
+if [ -e "/data/local/devil/vibrator_cm" ];then
+	vibrator=`$BB cat /data/local/devil/vibrator_cm`
+	if [ "$vibrator" -le 100 ] && [ "$vibrator" -ge 0 ];then
+    		echo "vibrator: found valid vibrator intensity: <$vibrator>"
+    		echo $vibrator > /sys/class/misc/pwm_duty/pwm_duty
+	else
+		echo "vibrator: did not find valid vibrator intensity: setting default"
+		echo 80 > /sys/class/misc/pwm_duty/pwm_duty
+	fi
+else
+	echo "vibrator: did not find valid vibrator intensity: setting default"
+	echo 80 > /data/local/devil/vibrator_cm
+	echo 80 > /sys/class/misc/pwm_duty/pwm_duty
+fi
+
 # smooth_ui
 echo; echo "smooth_ui"
 if [ -e "/data/local/devil/smooth_ui" ];then
@@ -459,4 +477,4 @@ echo $swappiness > /data/local/devil/swappiness
 fi
 cat_msg_sysfile "swappiness: " /proc/sys/vm/swappiness  
 
-busybox mount -o ro,remount,noatime,noauto_da_alloc,nodiratime,barrier=0 /system
+$BB mount -o ro,remount,noatime,noauto_da_alloc,nodiratime,barrier=0 /system
