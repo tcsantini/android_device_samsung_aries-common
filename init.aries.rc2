@@ -6,7 +6,6 @@ on init
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
 
-    # FIXME: Market checks this variable for space-checking, but downloads to /datadata
     export DOWNLOAD_CACHE /data/download
 
     mkdir /storage/sdcard0 0000 root root
@@ -16,7 +15,6 @@ on init
     symlink /storage/sdcard1 /emmc
     symlink /storage/sdcard1 /mnt/emmc
     # FIXME: Remove emmc?
-    mkdir /datadata 0771 system system
 
     # We will create our own ril-daemon service in class 'core' because the
     # rild doesn't like being killed. (During device encryption.)
@@ -45,10 +43,10 @@ on fs
 
     mkdir /radio 0775 radio radio
     mount yaffs2 mtd@radio /radio
-    mount yaffs2 mtd@datadata /datadata
     mount_all fstab.aries
 
     exec /sbin/mount_data.sh
+    exec /sbin/removedatadata.sh
 
     chown radio radio /radio/modem.bin
 
@@ -77,11 +75,12 @@ on fs
     insmod /system/lib/modules/bcmdhd.ko
 
 on post-fs
-    chown system system /datadata
-    chmod 0771 /datadata
 
     chown system system /data/system
     chmod 0775 /data/system
+
+    chown root sdcard_rw /storage/sdcard0
+    chmod 0050 /storage/sdcard
 
     #symlinks for samsung RIL
     symlink /radio/modem.bin /dev/block/bml12
@@ -101,9 +100,7 @@ on post-fs-data
     # for migrating download provider's cache out of the small /data/data
     mkdir /data/data2 0771 system system
 
-    # setup datadata
-    exec /sbin/setupdatadata.sh
-    exec /sbin/create_dualboot_folders.sh
+    # start boot-patch
     exec /sbin/boot-patch.sh
 
     # wi-fi

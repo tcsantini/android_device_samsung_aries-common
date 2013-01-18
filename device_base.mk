@@ -68,10 +68,12 @@ PRODUCT_COPY_FILES += \
 
 #dual boot files
 PRODUCT_COPY_FILES += \
+	device/samsung/aries-common/init.aries.rc2:root/init.aries.rc2 \
 	device/samsung/aries-common/recovery.fstab.primary:recovery/root/etc/recovery.fstab.primary \
 	device/samsung/aries-common/recovery.fstab.secondary:recovery/root/etc/recovery.fstab.secondary \
 	device/samsung/aries-common/primary.fstab:recovery/root/etc/primary.fstab \
 	device/samsung/aries-common/secondary.fstab:recovery/root/etc/secondary.fstab \
+	device/samsung/aries-common/removedatadata.sh:root/sbin/removedatadata.sh \
 	device/samsung/aries-common/mount_data.sh:root/sbin/mount_data.sh
 
 # Prebuilt kl keymaps

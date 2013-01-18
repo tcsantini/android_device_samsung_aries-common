@@ -4,9 +4,9 @@
 /boot		mtd		boot
 /radio		mtd		radio
 
-/data		ext4		/dev/lvpool/userdata    length=-16384
+/data		ext4		/.secondrom/.secondrom/data.img    length=-16384
+#/data		ext4		/.secondrom/.secondrom/data.img		loop	
 /cache		yaffs2		cache
-/datadata	yaffs2		datadata
 
 /sdcard		vfat		/dev/block/mmcblk0p1
 /system		ext4		/dev/lvpool/secondary_system
