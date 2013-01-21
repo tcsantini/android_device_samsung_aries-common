@@ -2,3 +2,4 @@
 /.secondrom/.secondrom/data.img /data ext4 rw
 /dev/lvpool/secondary_system /system ext4 rw
 /dev/block/mmcblk0p1 /sdcard vfat rw
+/dev/block/mmcblk1p1 /external_sd vfat rw

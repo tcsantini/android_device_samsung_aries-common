@@ -5,7 +5,6 @@
 /radio		mtd		radio
 
 /data		ext4		/.secondrom/.secondrom/data.img    length=-16384
-#/data		ext4		/.secondrom/.secondrom/data.img		loop	
 /cache		yaffs2		cache
 
 /sdcard		vfat		/dev/block/mmcblk0p1
