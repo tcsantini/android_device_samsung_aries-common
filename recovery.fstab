@@ -5,7 +5,6 @@
 /radio		mtd		radio
 
 /cache		yaffs2		cache
-/datadata	yaffs2		datadata
 
 /sdcard		vfat		/dev/block/mmcblk0p1
 

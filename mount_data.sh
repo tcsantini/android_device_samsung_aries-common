@@ -9,8 +9,13 @@ $BB mount -t vfat /dev/block/mmcblk0p1 /.secondrom
 $BB chmod 0050 /.secondrom
 $BB chown root.sdcard_rw /.secondrom
    data=/.secondrom/.secondrom/data.img
+size=`$BB du -ks $data ||$BB awk '{print $1}'`
+echo "size: $size"
+	if $BB [ "$size" -le 700000 ] || $BB [ ! -s $data ] ; then
+	$BB rm -rf $data
+	fi
 #################### check if data.img already created #############
-		if $BB [ ! -f $data ]; then
+		if $BB [ ! -f $data ] ; then
         	   # create a file 700MB
         	   $BB dd if=/dev/zero of=$data bs=1024 count=716800
          	   # create ext4 filesystem
