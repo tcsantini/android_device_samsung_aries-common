@@ -34,11 +34,14 @@
 # and is used by people who have access to binary versions of the drivers
 # but not to the original vendor tree. Be sure to update both.
 
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := linaro
 
 # These is the hardware-specific overlay, which points to the location
 # of hardware-specific resource overrides, typically the frameworks and
 # application settings that are stored in resourced.
 DEVICE_PACKAGE_OVERLAYS := device/samsung/aries-common/overlay
+
+TARGET_KERNEL_CUSTOM_TOOLCHAIN_LINARO := linaro
 
 # These are the hardware-specific configuration files
 PRODUCT_COPY_FILES := \
@@ -52,10 +55,28 @@ PRODUCT_COPY_FILES += \
 	device/samsung/aries-common/init.aries.gps.rc:root/init.aries.gps.rc \
 	device/samsung/aries-common/init.aries.usb.rc:root/init.aries.usb.rc \
 	device/samsung/aries-common/init.aries.usb.rc:recovery/root/usb.rc \
-	device/samsung/aries-common/fstab.aries:root/fstab.aries \
+	device/samsung/aries-common/fstab.aries.primary:root/fstab.aries.primary\
+	device/samsung/aries-common/fstab.aries.secondary:root/fstab.aries.secondary\
 	device/samsung/aries-common/lpm.rc:root/lpm.rc \
 	device/samsung/aries-common/ueventd.aries.rc:root/ueventd.aries.rc \
+	device/samsung/aries-common/boot-patch.sh:root/sbin/boot-patch.sh \
 	device/samsung/aries-common/setupdatadata.sh:root/sbin/setupdatadata.sh
+
+# Recovery filemanager
+PRODUCT_COPY_FILES += \
+	device/samsung/aries-common/aroma/aromafm.zip:recovery/root/tmp/aromafm.zip \
+	device/samsung/aries-common/aroma/aromafm.zip.cfg:recovery/root/tmp/aromafm.zip.cfg
+
+#dual boot files
+PRODUCT_COPY_FILES += \
+	device/samsung/aries-common/init.aries.rc2:root/init.aries.rc2 \
+	device/samsung/aries-common/recovery.fstab.primary:recovery/root/etc/recovery.fstab.primary \
+	device/samsung/aries-common/recovery.fstab.secondary:recovery/root/etc/recovery.fstab.secondary \
+	device/samsung/aries-common/default.fstab:recovery/root/etc/default.fstab \
+	device/samsung/aries-common/primary.fstab:recovery/root/etc/primary.fstab \
+	device/samsung/aries-common/secondary.fstab:recovery/root/etc/secondary.fstab \
+	device/samsung/aries-common/removedatadata.sh:root/sbin/removedatadata.sh \
+	device/samsung/aries-common/mount_data.sh:root/sbin/mount_data.sh
 
 # Prebuilt kl keymaps
 PRODUCT_COPY_FILES += \
