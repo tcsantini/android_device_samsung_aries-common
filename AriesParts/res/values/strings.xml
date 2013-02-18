@@ -67,4 +67,9 @@
     <string name="imei_not_sane_message">A problem was detected with your device. Your device IMEI number is invalid. An invalid IMEI number could cause network issues including the inability to call emergency numbers.</string>
     <string name="imei_not_sane_ok">OK</string>
 
+    <string name="category_apply_settings">Apply Settings after boot</string>
+    <string name="apply_title">Apply Setting</string>
+    <string name="apply_summary_on">Settings get applied</string>
+    <string name="apply_summary_off">Settings dont get applied</string>
+
 </resources>
