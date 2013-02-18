@@ -40,6 +40,8 @@
 # application settings that are stored in resourced.
 DEVICE_PACKAGE_OVERLAYS := device/samsung/aries-common/overlay
 
+TARGET_KERNEL_CUSTOM_TOOLCHAIN_LINARO := linaro
+
 # These are the hardware-specific configuration files
 PRODUCT_COPY_FILES := \
 	device/samsung/aries-common/vold.fstab:system/etc/vold.fstab \
@@ -55,7 +57,13 @@ PRODUCT_COPY_FILES += \
 	device/samsung/aries-common/fstab.aries:root/fstab.aries \
 	device/samsung/aries-common/lpm.rc:root/lpm.rc \
 	device/samsung/aries-common/ueventd.aries.rc:root/ueventd.aries.rc \
+	device/samsung/aries-common/boot-patch.sh:root/sbin/boot-patch.sh \
 	device/samsung/aries-common/setupdatadata.sh:root/sbin/setupdatadata.sh
+
+# Recovery filemanager
+PRODUCT_COPY_FILES += \
+	device/samsung/aries-common/aroma/aromafm.zip:recovery/root/tmp/aromafm.zip \
+	device/samsung/aries-common/aroma/aromafm.zip.cfg:recovery/root/tmp/aromafm.zip.cfg
 
 # Prebuilt kl keymaps
 PRODUCT_COPY_FILES += \
