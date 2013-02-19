@@ -11,7 +11,7 @@ public class Apply implements OnPreferenceChangeListener {
 
 
     /**
-     * Restore dockaudio settings from SharedPreferences. (Write to kernel.)
+     * Restore apply settings from SharedPreferences.
      * @param context       The context to read the SharedPreferences from
      */
     public static void restore(Context context) {
