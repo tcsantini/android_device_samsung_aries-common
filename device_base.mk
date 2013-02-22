@@ -61,11 +61,6 @@ PRODUCT_COPY_FILES += \
 	device/samsung/aries-common/boot-patch.sh:root/sbin/boot-patch.sh \
 	device/samsung/aries-common/setupdatadata.sh:root/sbin/setupdatadata.sh
 
-# Recovery filemanager
-PRODUCT_COPY_FILES += \
-	device/samsung/aries-common/aroma/aromafm.zip:recovery/root/tmp/aromafm.zip \
-	device/samsung/aries-common/aroma/aromafm.zip.cfg:recovery/root/tmp/aromafm.zip.cfg
-
 # Prebuilt kl keymaps
 PRODUCT_COPY_FILES += \
 	device/samsung/aries-common/cypress-touchkey.kl:system/usr/keylayout/cypress-touchkey.kl \
