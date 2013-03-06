@@ -24,13 +24,8 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
-import android.preference.PreferenceActivity;
-import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceChangeListener;
-
-import com.cyanogenmod.settings.device.R;
 
 public class EnableDockAudio implements OnPreferenceChangeListener {
 
