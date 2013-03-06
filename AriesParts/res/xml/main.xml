@@ -91,6 +91,17 @@
         </PreferenceCategory>
 
         <PreferenceCategory
+            android:title="@string/category_dock_audio_title"
+            android:key="category_enable_dock_audio">
+            <CheckBoxPreference
+                android:key="dock_audio"
+                android:title="@string/dock_audio_title"
+                android:summaryOn="@string/dock_audio_summary_on"
+                android:summaryOff="@string/dock_audio_summary_off"
+                android:persistent="true" />
+        </PreferenceCategory>
+
+        <PreferenceCategory
             android:title="@string/category_vibration_title">
             <!-- Vibration -->
             <com.cyanogenmod.settings.device.VibrationPreference

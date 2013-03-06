@@ -30,6 +30,8 @@ public class DeviceSettings extends PreferenceActivity  {
     public static final String KEY_CARDOCK_AUDIO = "cardock_audio";
     public static final String KEY_DESKDOCK_AUDIO = "deskdock_audio";
     public static final String KEY_DOCK_AUDIO_CATEGORY = "category_dock_audio";
+    public static final String KEY_ENABLE_DOCK_AUDIO_CATEGORY = "category_enable_dock_audio";
+    public static final String KEY_DOCK_AUDIO = "dock_audio";
     public static final String KEY_VIBRATION = "vibration";
     public static final String KEY_APPLY = "apply";
 
@@ -43,6 +45,7 @@ public class DeviceSettings extends PreferenceActivity  {
     private VolumeBoostPreference mVolumeBoost;
     private CheckBoxPreference mCarDockAudio;
     private CheckBoxPreference mDeskDockAudio;
+    private CheckBoxPreference mDockAudio;
     private VibrationPreference mVibration;
     private CheckBoxPreference mApply;
 
@@ -101,6 +104,15 @@ public class DeviceSettings extends PreferenceActivity  {
             PreferenceCategory category = (PreferenceCategory) getPreferenceScreen().findPreference(KEY_DOCK_AUDIO_CATEGORY);
             category.removePreference(mCarDockAudio);
             category.removePreference(mDeskDockAudio);
+            getPreferenceScreen().removePreference(category);
+        }
+
+        mDockAudio = (CheckBoxPreference) findPreference(KEY_DOCK_AUDIO);
+        if (EnableDockAudio.isSupported()) {
+            mDockAudio.setOnPreferenceChangeListener(new EnableDockAudio());
+        } else {
+            PreferenceCategory category = (PreferenceCategory) getPreferenceScreen().findPreference(KEY_ENABLE_DOCK_AUDIO_CATEGORY);
+            category.removePreference(mDockAudio);
             getPreferenceScreen().removePreference(category);
         }
 
