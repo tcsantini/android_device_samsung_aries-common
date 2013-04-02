@@ -30,8 +30,7 @@ static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 
 char const *const LCD_FILE = "/sys/class/backlight/s5p_bl/brightness";
-char const *const LED_FILE = "/sys/class/misc/notification/led";
-char const *const BLN_FILE = "/sys/class/misc/backlightnotification/notification_led";
+char const *const LED_FILE = "/sys/class/misc/backlightnotification/notification_led";
 
 static int write_int(char const *path, int value)
 {
@@ -81,11 +80,7 @@ static int set_light_notifications(struct light_device_t* dev,
 		v = 0;
 
 	ALOGI("color %u fm %u status %u is lit %u brightness", state->color, state->flashMode, v, (state->color & 0x00ffffff), brightness);
-	if( access( LED_FILE, F_OK ) != -1 ) {
 	ret = write_int(LED_FILE, v);
-	} else 	if( access( BLN_FILE, F_OK ) != -1 ) {
-	ret = write_int(BLN_FILE, v);
-	}
 	pthread_mutex_unlock(&g_lock);
 	return ret;
 }
