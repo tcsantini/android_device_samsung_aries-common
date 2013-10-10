@@ -39,7 +39,7 @@ TARGET_BOOTLOADER_BOARD_NAME := aries
 BOARD_MOBILEDATA_INTERFACE_NAME = "pdp0"
 
 # Kernel Source
-TARGET_KERNEL_SOURCE := kernel/samsung/aries
+TARGET_KERNEL_SOURCE := kernel/samsung/devil
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/aries-common

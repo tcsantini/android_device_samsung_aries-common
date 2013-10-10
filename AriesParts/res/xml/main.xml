@@ -99,4 +99,15 @@
                 android:summary="@string/vibration_summary_head" />
          </PreferenceCategory>
 
+        <PreferenceCategory
+            android:title="@string/category_apply_settings"
+            android:key="category_apply">
+            <CheckBoxPreference
+                android:key="apply"
+                android:title="@string/apply_title"
+                android:summaryOn="@string/apply_summary_on"
+                android:summaryOff="@string/apply_summary_off"
+                android:persistent="true" />
+        </PreferenceCategory>
+
 </PreferenceScreen>
