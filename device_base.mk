@@ -40,7 +40,8 @@
 # application settings that are stored in resourced.
 DEVICE_PACKAGE_OVERLAYS := device/samsung/aries-common/overlay
 
-TARGET_KERNEL_CUSTOM_TOOLCHAIN_LINARO := linaro
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := linaro
+TOOLCHAIN_GNUEABIHF := true
 
 # These are the hardware-specific configuration files
 PRODUCT_COPY_FILES := \
