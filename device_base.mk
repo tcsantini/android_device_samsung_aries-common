@@ -43,6 +43,8 @@ DEVICE_PACKAGE_OVERLAYS := device/samsung/aries-common/overlay
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := linaro
 TOOLCHAIN_GNUEABIHF := true
 
+FULL_LINARO := true
+
 # These are the hardware-specific configuration files
 PRODUCT_COPY_FILES := \
 	device/samsung/aries-common/egl.cfg:system/lib/egl/egl.cfg \
