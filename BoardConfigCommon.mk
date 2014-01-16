@@ -121,6 +121,8 @@ USE_OPENGL_RENDERER := true
 TARGET_DISABLE_TRIPLE_BUFFERING := false
 
 BOARD_ALLOW_EGL_HIBERNATION := true
+BOARD_EGL_WORKAROUND_BUG_10194508 := true
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 # hwcomposer: custom vsync ioctl
 BOARD_CUSTOM_VSYNC_IOCTL := true
@@ -128,17 +130,20 @@ BOARD_CUSTOM_VSYNC_IOCTL := true
 # Suspend in charger to disable capacitive keys
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
+# Required for TV out
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+
+# Screenrecord
+BOARD_SCREENRECORD_LANDSCAPE_ONLY := true
+
 # SELinux
 BOARD_SEPOLICY_DIRS += \
     device/samsung/aries-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
     bdaddr_read.te \
-    device.te \
-    domain.te \
     file_contexts \
     geomagneticd.te \
-    mediaserver.te \
     orientationd.te \
     property_contexts \
     pvrsrvinit.te \
