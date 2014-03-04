@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2013 The CyanogenMod Project
+<!--
+     Copyright (C) 2013-2014 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -41,7 +42,7 @@
     <string name="tvout_enable_summary_nocable">TV Out cable not connected</string>
     <string name="tvout_enable_summary">TV Out cable connected, check to enable</string>
     <string name="tvout_enable_summary_on">TV Out enabled</string>
-    <string name="tvout_system_head">TV System</string>
+    <string name="tvout_system_head">TV system</string>
     <string name="tvout_system_summary">Set your TV system for TV Out</string>
 
     <string name="category_volume_boost_title">Volume Controls</string>

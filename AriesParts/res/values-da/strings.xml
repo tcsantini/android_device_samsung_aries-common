@@ -14,8 +14,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">Galaxy S-indstillinger</string>
-
+    <string name="app_name">Avancerede indstillinger</string>
     <string name="category_screen_title">Skærm</string>
     <string name="color_tuning_title_head">Farvejustering</string>
     <string name="color_tuning_summary_head">Kalibrér skærmfarve</string>
@@ -43,7 +42,7 @@
     <string name="tvout_enable_summary_on">TV-OUT slået til</string>
     <string name="tvout_system_head">TV-system</string>
     <string name="tvout_system_summary">Indstil dit TV-system til TV-OUT</string>
-	
+
     <string name="category_volume_boost_title">Kontrol af lydstyrke</string>
     <string name="volume_boost_title_head">Kontrol af opkaldslydstyrke</string>
     <string name="volume_boost_summary_head">Indstillinger til at øge opkaldslydstyrke</string>
@@ -71,9 +70,7 @@
     <string name="vibration_test_title">Test</string>
 
     <string name="button_reset_title">Nulstil</string>
-
     <string name="generic_warning_title">Advarsel</string>
-
     <string name="imei_not_sane_title">Advarsel!</string>
     <string name="imei_not_sane_message">Der blev fundet et problem med din enhed. Din enheds IMEI-nummer er ugyldigt. Et ugyldigt IMEI-nummer kan forårsage netværksproblemer, bl.a. manglende evne til at foretage nødopkald.</string>
     <string name="imei_not_sane_ok">OK</string>
